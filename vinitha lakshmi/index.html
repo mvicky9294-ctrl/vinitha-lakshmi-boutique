@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VINITHA LAKSHMI COLLECTION | Premium Women's Boutique</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'babypink': '#FFF0F5',
+                        'blush': '#FFE4E1',
+                        'softpink': '#F8C8DC',
+                        'rose-accent': '#E68A9C',
+                        'deep-rose': '#C25975',
+                        'dark-magenta': '#9C27B0',
+                        'pink-highlight': '#D81B60',
+                    },
+                    fontFamily: {
+                        'cinzel': ['Cinzel', 'serif'],
+                        'playfair': ['Playfair Display', 'serif'],
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFF0F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E68A9C;
+            border-radius: 4px;
+        }
+        .hero-pattern {
+            background-color: #fff0f5;
+            background-image: radial-gradient(#e68a9c 0.6px, transparent 0.6px), radial-gradient(#e08594 0.6px, #fff0f5 0.6px);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
+        }
+        .glass-header {
+            background: rgba(255, 240, 245, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .pink-gradient-text {
+            background: linear-gradient(135deg, #D81B60 0%, #E68A9C 50%, #C25975 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover-effect {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px -10px rgba(194, 89, 117, 0.25);
+        }
+        .nav-active {
+            color: #D81B60;
+            border-bottom: 2px solid #D81B60;
+            font-weight: 700;
+        }
+        .page-view {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .page-view.active-page {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-babypink via-white to-blush text-gray-800 font-montserrat min-h-screen flex flex-col justify-between">
+
+    <!-- Top Pink Announcement Bar -->
+    <div class="bg-gradient-to-r from-deep-rose via-pink-highlight to-deep-rose text-white py-2 px-4 text-center text-xs md:text-sm font-semibold tracking-wider shadow-sm">
+        <i class="fa-solid fa-heart mr-2 text-softpink"></i> VINITHA LAKSHMI COLLECTION — Exclusive Women's Ethnic, Fashion & Daily Wear
+    </div>
+
+    <!-- Header / Navigation Bar -->
+    <header class="sticky top-0 z-40 glass-header border-b border-softpink shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-24">
+                
+                <!-- Brand Logo Section -->
+                <button onclick="switchTab('home-page')" class="flex items-center gap-3 group text-left">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-deep-rose via-rose-accent to-softpink flex items-center justify-center text-white shadow-md p-[2px] group-hover:scale-105 transition-transform">
+                        <div class="w-full h-full bg-babypink rounded-full flex items-center justify-center">
+                            <span class="font-cinzel text-xl font-bold pink-gradient-text tracking-tighter">VL</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h1 class="font-cinzel text-xl sm:text-2xl lg:text-3xl font-extrabold text-pink-highlight tracking-wider uppercase leading-none">
+                            Vinitha Lakshmi
+                        </h1>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span class="h-[1px] w-4 bg-rose-accent"></span>
+                            <span class="text-[11px] font-montserrat tracking-[0.25em] text-deep-rose uppercase font-bold block">
+                                C o l l e c t i o n
+                            </span>
+                            <span class="h-[1px] w-4 bg-rose-accent"></span>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- Desktop Navigation Bar -->
+                <nav class="hidden md:flex items-center gap-6 lg:gap-8 font-medium text-sm text-gray-700">
+                    <button onclick="switchTab('home-page')" id="nav-home-page" class="nav-btn nav-active hover:text-pink-highlight transition-colors py-2">Home & About</button>
+                    <button onclick="switchTab('catalog-page')" id="nav-catalog-page" class="nav-btn hover:text-pink-highlight transition-colors py-2">All Collections</button>
+                    <button onclick="switchTab('contact-page')" id="nav-contact-page" class="nav-btn hover:text-pink-highlight transition-colors py-2">Location & Contact</button>
+                </nav>
+
+                <!-- Header Call Action -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a href="tel:8248733288" class="inline-flex items-center gap-2 bg-gradient-to-r from-deep-rose via-pink-highlight to-rose-accent text-white px-5 py-2.5 rounded-full text-xs font-bold shadow-md hover:brightness-105 transition-all border border-softpink">
+                        <i class="fa-solid fa-phone text-softpink"></i>
+                        <span>82487 33288</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-pink-highlight hover:bg-softpink/30 focus:outline-none" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars text-2xl" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-babypink border-b border-softpink px-4 pt-3 pb-6 space-y-2">
+            <button onclick="switchTab('home-page')" class="mobile-link block w-full text-left py-2 px-3 rounded-md text-base font-semibold text-gray-800 hover:bg-softpink/50 hover:text-pink-highlight">Home & About</button>
+            <button onclick="switchTab('catalog-page')" class="mobile-link block w-full text-left py-2 px-3 rounded-md text-base font-semibold text-gray-800 hover:bg-softpink/50 hover:text-pink-highlight">All Collections</button>
+            <button onclick="switchTab('contact-page')" class="mobile-link block w-full text-left py-2 px-3 rounded-md text-base font-semibold text-gray-800 hover:bg-softpink/50 hover:text-pink-highlight">Location & Contact</button>
+            <div class="pt-2 border-t border-softpink">
+                <a href="tel:8248733288" class="flex items-center justify-center gap-2 bg-gradient-to-r from-deep-rose to-pink-highlight text-white w-full py-2.5 rounded-lg text-sm font-bold shadow">
+                    <i class="fa-solid fa-phone"></i> Call 82487 33288
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Pages Container -->
+    <main class="flex-grow">
+
+        <!-- ================= PAGE 1: HOME & ABOUT SHOP PAGE ================= -->
+        <section id="home-page" class="page-view active-page">
+            
+            <!-- Hero Banner Section -->
+            <div class="relative overflow-hidden hero-pattern py-12 lg:py-20 border-b border-softpink">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        
+                        <!-- Hero Text Details -->
+                        <div class="space-y-6 text-center lg:text-left">
+                            <div class="inline-flex items-center gap-2 bg-white/90 text-pink-highlight px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase border border-softpink shadow-sm">
+                                <i class="fa-solid fa-location-dot text-deep-rose"></i>
+                                <span>Aminjikarai, Chennai</span>
+                            </div>
+                            <h2 class="font-playfair text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                                Timeless Grace & <br>
+                                <span class="pink-gradient-text italic font-medium">Boutique Fashion</span>
+                            </h2>
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
+                                Welcome to <strong>Vinitha Lakshmi Collection</strong>. We offer an exclusive range of daily & festive Kurtis, Designer Sarees, Sparkling Imitation Jewellery, Soft Nighties, Colorful Bangles, and Quality Innerwears tailored for women.
+                            </p>
+                            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                                <button onclick="switchTab('catalog-page')" class="bg-gradient-to-r from-deep-rose via-pink-highlight to-rose-accent hover:opacity-95 text-white px-8 py-3.5 rounded-full font-bold text-sm shadow-lg hover:shadow-xl transition-all flex items-center gap-2 border border-softpink">
+                                    <span>Browse Shop Collections</span>
+                                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </button>
+                                <button onclick="switchTab('contact-page')" class="bg-white hover:bg-babypink text-pink-highlight border border-softpink px-6 py-3.5 rounded-full font-bold text-sm shadow-sm hover:shadow transition-all flex items-center gap-2">
+                                    <i class="fa-solid fa-store text-rose-accent"></i>
+                                    <span>Store Address & Map</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Hero Photo Grid Showcase -->
+                        <div class="relative">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="space-y-4">
+                                    <div class="overflow-hidden rounded-2xl shadow-md border-2 border-softpink group">
+                                        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80" alt="Silk Sarees" class="w-full h-48 sm:h-60 object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x800/FFE4E1/C25975?text=Saree+Collection'">
+                                    </div>
+                                    <div class="overflow-hidden rounded-2xl shadow-md border-2 border-softpink group">
+                                        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" alt="Imitation Jewellery" class="w-full h-36 sm:h-44 object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x500/FFE4E1/C25975?text=Imitation+Jewellery'">
+                                    </div>
+                                </div>
+                                <div class="space-y-4 pt-6">
+                                    <div class="overflow-hidden rounded-2xl shadow-md border-2 border-softpink group">
+                                        <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80" alt="Kurtis" class="w-full h-36 sm:h-44 object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x500/FFE4E1/C25975?text=Designer+Kurtis'">
+                                    </div>
+                                    <div class="overflow-hidden rounded-2xl shadow-md border-2 border-softpink group">
+                                        <img src="https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=600&q=80" alt="Bangles" class="w-full h-48 sm:h-60 object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x800/FFE4E1/C25975?text=Bangle+Collection'">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white px-6 py-2.5 rounded-full shadow-lg border border-softpink flex items-center gap-2">
+                                <i class="fa-solid fa-heart text-pink-highlight text-lg"></i>
+                                <span class="text-xs font-bold text-gray-800 uppercase tracking-wider">Women's Choice Boutique</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Home Direct Category Shortcut Buttons -->
+            <div class="py-12 bg-white border-b border-softpink">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-8">
+                        <span class="text-pink-highlight font-bold text-xs uppercase tracking-widest block mb-1">Direct Catalog Links</span>
+                        <h3 class="font-playfair text-2xl sm:text-3xl font-bold text-gray-900">Choose Your Favorite Category</h3>
+                        <div class="w-16 h-0.5 bg-rose-accent mx-auto mt-2"></div>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                        <button onclick="switchTab('catalog-page', 'kurtis')" class="p-4 rounded-2xl bg-gradient-to-b from-babypink to-white border border-softpink hover:border-pink-highlight hover:shadow-md transition-all text-center group">
+                            <div class="w-12 h-12 rounded-full bg-softpink/60 text-deep-rose flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-shirt text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-sm text-gray-800 group-hover:text-deep-rose">Kurtis</h4>
+                            <p class="text-[11px] text-gray-500 mt-1">Trendy & Casual</p>
+                        </button>
+
+                        <button onclick="switchTab('catalog-page', 'sarees')" class="p-4 rounded-2xl bg-gradient-to-b from-babypink to-white border border-softpink hover:border-pink-highlight hover:shadow-md transition-all text-center group">
+                            <div class="w-12 h-12 rounded-full bg-softpink/60 text-deep-rose flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-wand-magic-sparkles text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-sm text-gray-800 group-hover:text-deep-rose">Sarees</h4>
+                            <p class="text-[11px] text-gray-500 mt-1">Silk & Designer</p>
+                        </button>
+
+                        <button onclick="switchTab('catalog-page', 'jewellery')" class="p-4 rounded-2xl bg-gradient-to-b from-babypink to-white border border-softpink hover:border-pink-highlight hover:shadow-md transition-all text-center group">
+                            <div class="w-12 h-12 rounded-full bg-softpink/60 text-deep-rose flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-gem text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-sm text-gray-800 group-hover:text-deep-rose">Jewellery</h4>
+                            <p class="text-[11px] text-gray-500 mt-1">Matte & CZ Sets</p>
+                        </button>
+
+                        <button onclick="switchTab('catalog-page', 'nighties')" class="p-4 rounded-2xl bg-gradient-to-b from-babypink to-white border border-softpink hover:border-pink-highlight hover:shadow-md transition-all text-center group">
+                            <div class="w-12 h-12 rounded-full bg-softpink/60 text-deep-rose flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-moon text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-sm text-gray-800 group-hover:text-deep-rose">Nighties</h4>
+                            <p class="text-[11px] text-gray-500 mt-1">Pure Cotton Comfort</p>
+                        </button>
+
+                        <button onclick="switchTab('catalog-page', 'bangles')" class="p-4 rounded-2xl bg-gradient-to-b from-babypink to-white border border-softpink hover:border-pink-highlight hover:shadow-md transition-all text-center group">
+                            <div class="w-12 h-12 rounded-full bg-softpink/60 text-deep-rose flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-circle-notch text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-sm text-gray-800 group-hover:text-deep-rose">Bangles</h4>
+                            <p class="text-[11px] text-gray-500 mt-1">Velvet & Metal Sets</p>
+                        </button>
+
+                        <button onclick="switchTab('catalog-page', 'innerwears')" class="p-4 rounded-2xl bg-gradient-to-b from-babypink to-white border border-softpink hover:border-pink-highlight hover:shadow-md transition-all text-center group">
+                            <div class="w-12 h-12 rounded-full bg-softpink/60 text-deep-rose flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-ribbon text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-sm text-gray-800 group-hover:text-deep-rose">Innerwears</h4>
+                            <p class="text-[11px] text-gray-500 mt-1">Daily Comfort Fits</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Integrated About Shop Details Section -->
+            <div class="py-16 bg-gradient-to-b from-babypink via-blush/40 to-babypink">
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="bg-white rounded-3xl p-8 sm:p-12 border border-softpink shadow-sm relative overflow-hidden">
+                        
+                        <div class="text-center space-y-4 max-w-3xl mx-auto">
+                            <span class="text-pink-highlight font-bold text-xs uppercase tracking-widest border-b border-rose-accent pb-1">Shop Profile & Info</span>
+                            <h2 class="font-playfair text-3xl sm:text-4xl font-bold text-gray-900">About Vinitha Lakshmi Collection</h2>
+                            <div class="w-20 h-1 bg-gradient-to-r from-deep-rose via-pink-highlight to-deep-rose mx-auto rounded-full"></div>
+                            <p class="text-gray-700 text-sm sm:text-base leading-relaxed pt-2">
+                                Located at <strong>Aminjikarai, Chennai</strong>, Vinitha Lakshmi Collection is dedicated to providing high-quality women's clothing and fashion accessories under one roof. We carefully curate a wide range of products including daily and party-wear Kurtis, elegant Sarees, traditional and modern Imitation Jewellery, breathable pure cotton Nighties, vibrant Bangles, and essential Innerwear.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-10 text-center">
+                            <div class="bg-babypink/60 p-6 rounded-2xl border border-softpink shadow-sm">
+                                <i class="fa-solid fa-heart text-3xl text-pink-highlight mb-3"></i>
+                                <h4 class="font-bold text-base text-gray-900">Quality Assured</h4>
+                                <p class="text-xs text-gray-600 mt-1">Handpicked fabrics & durable jewellery polish.</p>
+                            </div>
+                            <div class="bg-babypink/60 p-6 rounded-2xl border border-softpink shadow-sm">
+                                <i class="fa-solid fa-tags text-3xl text-deep-rose mb-3"></i>
+                                <h4 class="font-bold text-base text-gray-900">Affordable Pricing</h4>
+                                <p class="text-xs text-gray-600 mt-1">Best wholesale & retail boutique rates in Chennai.</p>
+                            </div>
+                            <div class="bg-babypink/60 p-6 rounded-2xl border border-softpink shadow-sm">
+                                <i class="fa-solid fa-face-smile text-3xl text-rose-accent mb-3"></i>
+                                <h4 class="font-bold text-base text-gray-900">Personal Customer Service</h4>
+                                <p class="text-xs text-gray-600 mt-1">Dedicated assistance for all shoppers.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================= PAGE 2: COLLECTIONS CATALOG PAGE ================= -->
+        <section id="catalog-page" class="page-view py-12 bg-gradient-to-b from-white via-babypink/30 to-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Page Header -->
+                <div class="text-center max-w-2xl mx-auto mb-8 space-y-2">
+                    <span class="text-pink-highlight font-bold text-xs uppercase tracking-widest border-b border-rose-accent pb-1">Shop Catalog</span>
+                    <h2 class="font-playfair text-3xl sm:text-4xl font-bold text-gray-900">Boutique Collection</h2>
+                    <p class="text-gray-600 text-sm">Select any category tag below to view items available at our store.</p>
+                </div>
+
+                <!-- Category Filter Bar -->
+                <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
+                    <button class="category-btn active px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-sm border border-softpink bg-gradient-to-r from-deep-rose to-pink-highlight text-white" data-category="all">
+                        All Items
+                    </button>
+                    <button class="category-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-sm border border-softpink bg-white text-gray-700 hover:bg-softpink hover:text-deep-rose" data-category="kurtis">
+                        <i class="fa-solid fa-shirt mr-1.5 text-xs text-pink-highlight"></i> Kurtis
+                    </button>
+                    <button class="category-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-sm border border-softpink bg-white text-gray-700 hover:bg-softpink hover:text-deep-rose" data-category="sarees">
+                        <i class="fa-solid fa-wand-magic-sparkles mr-1.5 text-xs text-pink-highlight"></i> Sarees
+                    </button>
+                    <button class="category-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-sm border border-softpink bg-white text-gray-700 hover:bg-softpink hover:text-deep-rose" data-category="jewellery">
+                        <i class="fa-solid fa-gem mr-1.5 text-xs text-pink-highlight"></i> Imitation Jewellery
+                    </button>
+                    <button class="category-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-sm border border-softpink bg-white text-gray-700 hover:bg-softpink hover:text-deep-rose" data-category="nighties">
+                        <i class="fa-solid fa-moon mr-1.5 text-xs text-pink-highlight"></i> Nighties
+                    </button>
+                    <button class="category-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-sm border border-softpink bg-white text-gray-700 hover:bg-softpink hover:text-deep-rose" data-category="bangles">
+                        <i class="fa-solid fa-circle-notch mr-1.5 text-xs text-pink-highlight"></i> Bangles
+                    </button>
+                    <button class="category-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-sm border border-softpink bg-white text-gray-700 hover:bg-softpink hover:text-deep-rose" data-category="innerwears">
+                        <i class="fa-solid fa-ribbon mr-1.5 text-xs text-pink-highlight"></i> Innerwears
+                    </button>
+                </div>
+
+                <!-- Products Dynamic Grid -->
+                <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 min-h-[400px]">
+                    <!-- Products injected via JS -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= PAGE 3: LOCATION & CONTACT PAGE ================= -->
+        <section id="contact-page" class="page-view py-16 bg-gradient-to-b from-babypink to-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
+                    <span class="text-pink-highlight font-bold text-xs uppercase tracking-widest border-b border-rose-accent pb-1">Get In Touch</span>
+                    <h2 class="font-playfair text-3xl sm:text-4xl font-bold text-gray-900">Visit Our Boutique</h2>
+                    <p class="text-gray-600 text-sm">We are conveniently located in Aminjikarai, Chennai. Stop by or call us!</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                    
+                    <!-- Contact Details Card -->
+                    <div class="bg-white rounded-3xl p-8 border border-softpink shadow-sm flex flex-col justify-between">
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-full bg-babypink border border-softpink flex items-center justify-center text-deep-rose text-xl shrink-0">
+                                    <i class="fa-solid fa-store"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-base text-gray-900">Shop Name</h4>
+                                    <p class="text-sm font-semibold text-deep-rose">VINITHA LAKSHMI COLLECTION</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-full bg-babypink border border-softpink flex items-center justify-center text-pink-highlight text-xl shrink-0">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-base text-gray-900">Full Store Address</h4>
+                                    <p class="text-sm text-gray-700 mt-0.5 leading-relaxed">
+                                        No: 17/7, Metha Nagar Road,<br>
+                                        Aminjikarai, Chennai - 600029
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-full bg-babypink border border-softpink flex items-center justify-center text-green-600 text-xl shrink-0">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-base text-gray-900">Contact Number</h4>
+                                    <a href="tel:8248733288" class="text-sm font-bold text-deep-rose hover:underline block mt-0.5">+91 82487 33288</a>
+                                    <p class="text-xs text-gray-500">Available during shop working hours</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-6 border-t border-softpink mt-6 flex gap-3">
+                            <a href="tel:8248733288" class="flex-1 py-3 bg-gradient-to-r from-deep-rose to-pink-highlight text-white rounded-xl text-xs font-bold shadow text-center flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-phone"></i> Call Now
+                            </a>
+                            <a href="https://wa.me/918248733288" target="_blank" class="flex-1 py-3 bg-green-600 hover:bg-green-700 text-white rounded-xl text-xs font-bold shadow text-center flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Visual Google Map Placeholder Card -->
+                    <div class="bg-white rounded-3xl p-4 border border-softpink shadow-sm flex flex-col">
+                        <div class="w-full h-full min-h-[300px] bg-babypink rounded-2xl overflow-hidden relative flex flex-col items-center justify-center p-6 border border-softpink text-center">
+                            <i class="fa-solid fa-map-location-dot text-5xl text-pink-highlight mb-4"></i>
+                            <h4 class="font-playfair font-bold text-lg text-gray-900">Aminjikarai, Chennai - 29</h4>
+                            <p class="text-xs text-gray-600 max-w-xs mt-1 mb-4">No: 17/7, Metha Nagar Road, Aminjikarai</p>
+                            <a href="https://maps.google.com/?q=Aminjikarai+Chennai" target="_blank" class="bg-white text-deep-rose border border-softpink px-5 py-2.5 rounded-full text-xs font-bold shadow hover:bg-deep-rose hover:text-white transition-colors inline-flex items-center gap-2">
+                                <i class="fa-solid fa-diamond-turn-right text-pink-highlight"></i>
+                                <span>Open Map Directions</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal Product Preview Popup -->
+    <div id="productModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl relative border-2 border-softpink">
+            <button id="closeModalBtn" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-gray-700 flex items-center justify-center shadow focus:outline-none">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div id="modalContent" class="p-6">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= FIXED FOOTER FOR ALL PAGES ================= -->
+    <footer class="bg-gradient-to-b from-babypink via-blush to-babypink border-t-2 border-softpink pt-12 pb-6 text-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b border-softpink">
+                
+                <!-- Footer Brand Column -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-deep-rose via-pink-highlight to-softpink flex items-center justify-center text-white font-bold shadow p-[2px]">
+                            <div class="w-full h-full bg-babypink rounded-full flex items-center justify-center">
+                                <span class="font-cinzel text-sm font-bold pink-gradient-text">VL</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-cinzel font-bold text-base text-deep-rose uppercase tracking-wider">Vinitha Lakshmi</h3>
+                            <p class="text-[10px] text-pink-highlight tracking-widest uppercase font-bold">Collection</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Women's Boutique Store in Aminjikarai, Chennai. Quality Kurtis, Sarees, Imitation Jewellery, Nighties, Bangles & Innerwears.
+                    </p>
+                </div>
+
+                <!-- Footer Location Column -->
+                <div class="space-y-2">
+                    <h4 class="font-playfair text-sm font-bold text-gray-900 border-b border-softpink pb-1 inline-block">Store Address</h4>
+                    <div class="text-xs text-gray-700 space-y-1">
+                        <p class="font-bold text-gray-900">Vinitha Lakshmi Collection</p>
+                        <p>No: 17/7, Metha Nagar Road,</p>
+                        <p>Aminjikarai, Chennai - 600029</p>
+                    </div>
+                </div>
+
+                <!-- Footer Contact Column -->
+                <div class="space-y-2">
+                    <h4 class="font-playfair text-sm font-bold text-gray-900 border-b border-softpink pb-1 inline-block">Call / WhatsApp</h4>
+                    <div class="text-xs text-gray-700 space-y-2">
+                        <p class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-deep-rose"></i>
+                            <a href="tel:8248733288" class="font-bold text-gray-900 hover:text-deep-rose">+91 82487 33288</a>
+                        </p>
+                        <p class="flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-green-600"></i>
+                            <a href="https://wa.me/918248733288" target="_blank" class="font-bold text-gray-900 hover:text-green-600">WhatsApp Enquiry</a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer Bottom Copyright -->
+            <div class="pt-6 text-center text-xs text-gray-500 flex flex-col sm:flex-row items-center justify-between gap-2">
+                <p>&copy; VINITHA LAKSHMI COLLECTION. All Rights Reserved.</p>
+                <p class="text-[11px] text-gray-500">Aminjikarai, Chennai - 600029 • Ph: 82487 33288</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Navigation & Catalog Logic -->
+    <script>
+        // Product Catalog Data
+        const products = [
+            {
+                id: 1,
+                name: "Designer Anarkali Cotton Kurti",
+                category: "kurtis",
+                price: "₹899",
+                tag: "Best Seller",
+                image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80",
+                description: "Elegant floral print cotton Kurti with detailed rose neckline embroidery."
+            },
+            {
+                id: 2,
+                name: "Rayon Straight Cut Floral Kurti",
+                category: "kurtis",
+                price: "₹650",
+                tag: "New Arrival",
+                image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=600&q=80",
+                description: "Comfortable breathable rayon fabric with side slits and trendy sleeve design."
+            },
+            {
+                id: 3,
+                name: "Kanchipuram Soft Silk Saree",
+                category: "sarees",
+                price: "₹2,499",
+                tag: "Popular",
+                image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80",
+                description: "Rich woven pink border soft silk saree with matching unstitched blouse piece."
+            },
+            {
+                id: 4,
+                name: "Georgette Printed Saree",
+                category: "sarees",
+                price: "₹1,250",
+                tag: "Trending",
+                image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=600&q=80",
+                description: "Lightweight, easy-to-drape floral printed saree with contrasting border."
+            },
+            {
+                id: 5,
+                name: "Antique Rose Finish Necklace Set",
+                category: "jewellery",
+                price: "₹799",
+                tag: "Rose Finish",
+                image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80",
+                description: "Traditional temple design necklace set with matching jhumkas in matte finish."
+            },
+            {
+                id: 6,
+                name: "CZ Stone Sparkle Drop Earrings",
+                category: "jewellery",
+                price: "₹350",
+                tag: "Sparkle",
+                image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80",
+                description: "American diamond sparkle drop earrings with rose gold plating."
+            },
+            {
+                id: 7,
+                name: "Pure Cotton Printed Nighty",
+                category: "nighties",
+                price: "₹450",
+                tag: "100% Cotton",
+                image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80",
+                description: "Soft cotton loose fit nightwear with front zipper and side pocket."
+            },
+            {
+                id: 8,
+                name: "Alpine Soft Hosiery Night Gown",
+                category: "nighties",
+                price: "₹550",
+                tag: "Daily Soft",
+                image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=600&q=80",
+                description: "Stretchable non-fading hosiery nighty with neck embroidery."
+            },
+            {
+                id: 9,
+                name: "Velvet Metallic Bangle Set (24 Pcs)",
+                category: "bangles",
+                price: "₹299",
+                tag: "Pack of 24",
+                image: "https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=600&q=80",
+                description: "Soft velvet finished bangles mixed with glitter metallic separators."
+            },
+            {
+                id: 10,
+                name: "Glass Choodi Bridal Bangle Pack",
+                category: "bangles",
+                price: "₹499",
+                tag: "Bridal Special",
+                image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80",
+                description: "Handcrafted glass bangles with kundan studding for festive wear."
+            },
+            {
+                id: 11,
+                name: "Seamless Breathable Cotton Bra",
+                category: "innerwears",
+                price: "₹280",
+                tag: "Daily Comfort",
+                image: "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=600&q=80",
+                description: "All-day comfort stretchable non-padded wireless bra."
+            },
+            {
+                id: 12,
+                name: "High-Waist Cotton Panties (Pack of 3)",
+                category: "innerwears",
+                price: "₹399",
+                tag: "Pack of 3",
+                image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&q=80",
+                description: "Soft combed cotton full coverage panty set in pastel pink tones."
+            }
+        ];
+
+        // Multi-Page Navigation Switcher
+        function switchTab(pageId, categoryFilter = 'all') {
+            document.querySelectorAll('.page-view').forEach(page => {
+                page.classList.remove('active-page');
+            });
+
+            const selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.add('active-page');
+            }
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('nav-active');
+            });
+            const activeNavBtn = document.getElementById('nav-' + pageId);
+            if (activeNavBtn) {
+                activeNavBtn.classList.add('nav-active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (pageId === 'catalog-page') {
+                filterProducts(categoryFilter);
+            }
+        }
+
+        // Render Product Cards Grid
+        function filterProducts(categoryFilter = 'all') {
+            const grid = document.getElementById('productGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            categoryBtns.forEach(btn => {
+                const cat = btn.getAttribute('data-category');
+                if (cat === categoryFilter) {
+                    btn.className = "category-btn active px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-sm border border-softpink bg-gradient-to-r from-deep-rose to-pink-highlight text-white";
+                } else {
+                    btn.className = "category-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-sm border border-softpink bg-white text-gray-700 hover:bg-softpink hover:text-deep-rose";
+                }
+            });
+
+            const filtered = categoryFilter === 'all' 
+                ? products 
+                : products.filter(p => p.category === categoryFilter);
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <i class="fa-solid fa-box-open text-4xl text-pink-highlight mb-3"></i>
+                        <p class="text-gray-500 font-medium">No items found in this category.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(product => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl overflow-hidden border border-softpink shadow-sm card-hover-effect flex flex-col justify-between";
+                card.innerHTML = `
+                    <div>
+                        <div class="relative overflow-hidden group h-60">
+                            <img src="${product.image}" alt="${product.name}" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                 onerror="this.src='https://placehold.co/600x700/FFE4E1/C25975?text=${encodeURIComponent(product.name)}'">
+                            <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-deep-rose text-[10px] font-bold px-3 py-1 rounded-full shadow-sm uppercase tracking-wider border border-softpink">
+                                ${product.tag}
+                            </span>
+                            <button onclick="openModal(${product.id})" class="absolute bottom-3 right-3 bg-white/90 hover:bg-deep-rose hover:text-white text-gray-700 w-9 h-9 rounded-full flex items-center justify-center shadow transition-colors" title="Quick View">
+                                <i class="fa-solid fa-eye text-xs"></i>
+                            </button>
+                        </div>
+                        <div class="p-4">
+                            <span class="text-[10px] font-bold text-pink-highlight uppercase tracking-widest block mb-1">${product.category}</span>
+                            <h4 class="font-playfair font-bold text-base text-gray-900 line-clamp-1 mb-1">${product.name}</h4>
+                            <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed mb-3">${product.description}</p>
+                        </div>
+                    </div>
+                    <div class="px-4 pb-4 pt-0 flex items-center justify-between border-t border-babypink mt-auto">
+                        <span class="text-base font-bold text-deep-rose font-montserrat">${product.price}</span>
+                        <a href="https://wa.me/918248733288?text=Hi%20Vinitha%20Lakshmi%20Collection,%20I%20am%20interested%20in%20${encodeURIComponent(product.name)}" target="_blank" class="inline-flex items-center gap-1 text-[11px] font-bold text-gray-700 hover:text-deep-rose bg-babypink hover:bg-softpink px-3 py-1.5 rounded-full transition-colors">
+                            <i class="fa-brands fa-whatsapp text-green-600 text-xs"></i> Enquiry
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Category Filter Buttons Listener
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const cat = btn.getAttribute('data-category');
+                filterProducts(cat);
+            });
+        });
+
+        // Product Modal Functions
+        function openModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const modal = document.getElementById('productModal');
+            const modalContent = document.getElementById('modalContent');
+
+            modalContent.innerHTML = `
+                <div class="text-center space-y-3">
+                    <img src="${product.image}" alt="${product.name}" class="w-full h-52 object-cover rounded-2xl shadow border border-softpink" onerror="this.src='https://placehold.co/600x600/FFE4E1/C25975?text=Product+Preview'">
+                    <div>
+                        <span class="text-[10px] font-bold text-deep-rose bg-softpink px-2.5 py-0.5 rounded-full uppercase tracking-wider">${product.category}</span>
+                        <h3 class="font-playfair text-lg font-bold text-gray-900 mt-2">${product.name}</h3>
+                        <p class="text-xl font-bold text-deep-rose mt-0.5">${product.price}</p>
+                    </div>
+                    <p class="text-xs text-gray-600 leading-relaxed">${product.description}</p>
+                    <div class="pt-2 flex flex-col gap-2">
+                        <a href="https://wa.me/918248733288?text=Hi%20Vinitha%20Lakshmi%20Collection,%20I%20want%20to%20know%20more%20about%20${encodeURIComponent(product.name)}" target="_blank" class="w-full py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-xl text-xs font-bold shadow flex items-center justify-center gap-2 transition-colors">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Enquiry
+                        </a>
+                        <a href="tel:8248733288" class="w-full py-2 bg-babypink hover:bg-softpink text-deep-rose rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-colors">
+                            <i class="fa-solid fa-phone"></i> Call 82487 33288
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+        }
+
+        document.getElementById('closeModalBtn').addEventListener('click', () => {
+            document.getElementById('productModal').classList.add('hidden');
+        });
+
+        document.getElementById('productModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('productModal')) {
+                document.getElementById('productModal').classList.add('hidden');
+            }
+        });
+
+        // Mobile Nav Dropdown Listener
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = "fa-solid fa-bars text-2xl";
+            } else {
+                menuIcon.className = "fa-solid fa-xmark text-2xl";
+            }
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = "fa-solid fa-bars text-2xl";
+            });
+        });
+
+        // Initial Load setup
+        window.addEventListener('DOMContentLoaded', () => {
+            filterProducts('all');
+        });
+    </script>
+</body>
+</html>
